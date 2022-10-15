@@ -2,9 +2,9 @@ extends layout
 
 block content
   script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js") 
-  div.container
+  div.container.w-100
     h1.text-center= "Reports Product"
-    form.row.g-4(action='http://localhost:3000/',method="POST")
+    form.row.g-4.w-100(action='http://localhost:3000/',method="POST")
       div.col-auto
         label(for='area',class='fw-bold')= "Select Area"
         br
@@ -24,6 +24,7 @@ block content
         button(type ="submit",class="btn btn-primary")= "view" 
 
       canvas#chartBar 
+      
       script(type='text/javascript').
        var ctx = document.getElementById("chartBar").getContext('2d');
        ctx.canvas.parentNode.style.width = '50%';
@@ -49,9 +50,11 @@ block content
   div.container.mt-5
     table.table.table-striped
       thead 
-        td="brand"
+        td="Brand"
         each label in labeli 
           td #{label}
       tbody 
-        
-        
+        each product in pro
+          tr
+            td #{product}
+            - let i;
